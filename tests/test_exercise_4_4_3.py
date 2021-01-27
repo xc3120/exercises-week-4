@@ -16,8 +16,10 @@ def test_flip_vertical():
         [0, 0, 0, 0, 0, 0, 1, 0]]
     )
     test_flipped = Pattern(test_pattern)
-    assert np.array_equal(test_flipped.flip_vertical().grid, vflip_pattern)
-    assert np.array_equal(test_flipped.grid, test_pattern)
+    assert np.array_equal(test_flipped.flip_vertical().grid, vflip_pattern), \
+        "flip_vertical() transformation incorrect"
+    assert np.array_equal(test_flipped.grid, test_pattern), \
+        "flip_vertical() modifying original pattern"
 
 
 def test_flip_horizontal():
@@ -34,8 +36,10 @@ def test_flip_horizontal():
         [1, 1, 1, 0, 0, 0, 1, 0]
     ])
     test_flipped = Pattern(test_pattern)
-    assert np.array_equal(test_flipped.flip_horizontal().grid, hflip_pattern)
-    assert np.array_equal(test_flipped.grid, test_pattern)
+    assert np.array_equal(test_flipped.flip_horizontal().grid, hflip_pattern),\
+        "flip_horizontal() transformation incorrect"
+    assert np.array_equal(test_flipped.grid, test_pattern), \
+        "flip_horizontal() modifying original pattern"
 
 
 def test_flip_diag():
@@ -57,8 +61,10 @@ def test_flip_diag():
         [0, 0, 1]
     ])
     test_flipped = Pattern(test_pattern)
-    assert np.array_equal(test_flipped.flip_diag().grid, diag_pattern)
-    assert np.array_equal(test_flipped.grid, test_pattern)
+    assert np.array_equal(test_flipped.flip_diag().grid, diag_pattern), \
+        "flip_diag() transformation incorrect  / wrong dimensions"
+    assert np.array_equal(test_flipped.grid, test_pattern), \
+        "flip_diag() modifying original pattern"
 
 
 @pytest.mark.parametrize("n, transformation", [
@@ -98,5 +104,7 @@ def test_rotations(n, transformation):
     ])
 
     test_flipped = Pattern(test_pattern)
-    assert np.array_equal(test_flipped.rotate(n).grid, transformation)
-    assert np.array_equal(test_flipped.grid, test_pattern)
+    assert np.array_equal(test_flipped.rotate(n).grid, transformation), \
+        "rotate(n) transformation incorrect / wrong dimensions"
+    assert np.array_equal(test_flipped.grid, test_pattern), \
+        "rotate(n) modifying original pattern"
