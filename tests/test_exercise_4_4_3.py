@@ -108,3 +108,4 @@ def test_rotations(n, transformation):
         "rotate(n) transformation incorrect / wrong dimensions"
     assert np.array_equal(test_flipped.grid, test_pattern), \
         "rotate(n) modifying original pattern"
+
